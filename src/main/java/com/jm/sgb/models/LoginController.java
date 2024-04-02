@@ -84,7 +84,7 @@ public class LoginController implements Serializable {
             }
 
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("SysuserNotLogged"));
             return null;
         }
     }

@@ -15,9 +15,13 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>30</session-timeout>
+        <session-timeout>1</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>faces/Login.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <exception-type>jakarta.faces.application.ViewExpiredException</exception-type>
+        <location>/app/session.xhtml</location>
+    </error-page>
 </web-app>
