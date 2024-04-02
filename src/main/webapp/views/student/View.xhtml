@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+            #{bundle.ViewStudentTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="row">
+                <h:form>
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <h:graphicImage class="img-fluid" width="450px" height="auto"  library="img" name="sombrero.png"></h:graphicImage>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">Informacion de Estudiante</h5>
+                                    <p class="card-text">
+                                        <strong>Nombres y Apellidos: </strong>
+                                        <h:outputText value="#{studentController.selected.name} #{studentController.selected.lastnameOne} #{studentController.selected.lastnameTwo}" title="#{bundle.ViewStudentTitle_name}"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_dni}"/> </strong>
+                                        <h:outputText value="#{studentController.selected.dni}" title="#{bundle.ViewStudentTitle_dni}"/>    
+                                    </p>
+
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_age}"/> </strong>
+                                        <h:outputText value="#{studentController.selected.age} años" title="#{bundle.ViewStudentTitle_age}"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_birthday} "/></strong>
+                                        <h:outputText value="#{studentController.selected.birthday}" title="#{bundle.ViewStudentTitle_birthday}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                        </h:outputText>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_address} "/></strong>
+                                        <h:outputText value="#{studentController.selected.address}" title="#{bundle.ViewStudentTitle_address}"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_emal} "/></strong>
+                                        <h:outputText value="#{studentController.selected.emal}" title="#{bundle.ViewStudentTitle_emal}"/>
+                                    </p>
+                                    <h5 class="card-title text-success">Informacion Academica</h5>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_status} "/></strong>
+                                        <h:outputText value="#{studentController.selected.status == 'true' ? 'matri':'reti'}" title="#{bundle.ViewStudentTitle_status}"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong><h:outputText value="#{bundle.ViewStudentLabel_fkUnidad} "/></strong>
+                                        <h:outputText value="#{studentController.selected.fkUnidad.name}" title="#{bundle.ViewStudentTitle_fkUnidad}"/>
+                                    </p>
+
+                                    <div class="col-12 d-flex justify-content-center ">
+                                        <h:commandLink class="btn btn-primary me-1" action="#{studentController.prepareCreate}" value="#{bundle.ViewStudentCreateLink}" />
+                                        <h:commandLink class="btn btn-danger me-1" action="#{studentController.destroyAndView}" value="#{bundle.ViewStudentDestroyLink}"/>    
+                                        <h:link class="btn btn-success me-1" outcome="Edit" value="#{bundle.ViewStudentEditLink}"/>
+                                        <h:commandLink class="btn btn-secondary me-1" action="#{studentController.prepareList}" value="#{bundle.ViewStudentShowAllLink}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+           #{bundle.CreateSysuserTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{sysuserController.selected.address}" title="#{bundle.CreateSysuserTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_dni}" for="dni" />
+                    <h:inputText id="dni" value="#{sysuserController.selected.dni}" title="#{bundle.CreateSysuserTitle_dni}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_emal}" for="emal" />
+                    <h:inputText id="emal" value="#{sysuserController.selected.emal}" title="#{bundle.CreateSysuserTitle_emal}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_lastnameOne}" for="lastnameOne" />
+                    <h:inputText id="lastnameOne" value="#{sysuserController.selected.lastnameOne}" title="#{bundle.CreateSysuserTitle_lastnameOne}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_lastnameTwo}" for="lastnameTwo" />
+                    <h:inputText id="lastnameTwo" value="#{sysuserController.selected.lastnameTwo}" title="#{bundle.CreateSysuserTitle_lastnameTwo}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{sysuserController.selected.name}" title="#{bundle.CreateSysuserTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{sysuserController.selected.password}" title="#{bundle.CreateSysuserTitle_password}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{sysuserController.selected.status}" title="#{bundle.CreateSysuserTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_fkLvlusr}" for="fkLvlusr" />
+                    <h:selectOneMenu id="fkLvlusr" value="#{sysuserController.selected.fkLvlusr}" title="#{bundle.CreateSysuserTitle_fkLvlusr}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_fkLvlusr}">
+                        <f:selectItems value="#{levlusrController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sysuserController.create}" value="#{bundle.CreateSysuserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.CreateSysuserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSysuserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

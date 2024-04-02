@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.tags.core">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2 rounded-2">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="#">SGDE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Estudiantes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <h:link outcome="/views/student/List" class="dropdown-item" value="Show All Student Items"/>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gestion de Carpetas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h:link outcome="/views/folder/List" class="dropdown-item" value="Show All Folder Items"/></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"/></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Extensiones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h:link class="dropdown-item" outcome="/views/unidad/List" value="Show All Unidad Items"/></li>
+                            <li><hr class="dropdown-divider"/></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usuarios y Roles
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h:link class="dropdown-item" outcome="/views/sysuser/List" value="Show All Sysuser Items"/></li>
+                            <li><h:link class="dropdown-item" outcome="/views/levlusr/List" value="Show All Levlusr Items"/></li>
+                            <li><hr class="dropdown-divider"/></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Distritos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h:link class="dropdown-item" outcome="/views/district/List" value="Show All District Items"/></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"/></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <h:form class="d-flex">
+                    <div class="btn-group dropstart">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h:graphicImage library="img" name="usr-menu.png" alt="mdo" width="32" height="32" class="rounded-circle"/>
+                            #{userLog.emal}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><h:link outcome="/views/sysuser/EditProfile" class="dropdown-item" value="Configuracion"/></li>
+                            <li><h:link outcome="/views/sysuser/Profile" class="dropdown-item" value="Mi perfil"/></li>
+                            <li> <h:commandLink class="dropdown-item" value="Cerrar Sesion" action="#{loginController.logout()}"></h:commandLink></li>
+                        </ul>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </nav>  
+</ui:composition>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.tags.core">
+
+    <div id="sidebar">
+        <div class="sidebar-wrapper active">
+            <div class="sidebar-header position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <a href="index.html"><h:graphicImage name="logo.svg" library="img" ></h:graphicImage> </a>
+                    </div>
+                    <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
+
+                        <div class="form-check form-switch fs-6">
+                            <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" style="cursor: pointer"/>
+                            <label class="form-check-label"></label>
+                        </div>
+
+                    </div>
+                    <div class="sidebar-toggler  x">
+                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li class="sidebar-title">Menu</li>
+
+                    <li
+                        class="sidebar-item  ">
+                        <a href="index.html" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+
+
+                    </li>
+                    <li class="sidebar-title"><hr></hr></li>
+                    <li
+                        class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-backpack"></i>
+                            <span>Estudiantes</span>
+                        </a>
+
+                        <ul class="submenu ">
+
+                            <li class="submenu-item  ">
+                                <h:link outcome="/views/student/List" class="submenu-link" value="Show All Student Items"/>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li
+                        class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-archive"></i>
+                            <span>Gestion de Carpetas</span>
+                        </a>
+
+                        <ul class="submenu ">
+
+                            <li class="submenu-item  ">
+                                <h:link outcome="/views/folder/List" class="submenu-link" value="Show All Folder Items"/>
+                            </li>
+                        </ul>
+                    </li>
+                    <hr></hr>
+                    <li class="sidebar-title">Gestion de Unidades</li>
+                    <li
+                        class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-buildings"></i>
+                            <span>Extensiones</span>
+                        </a>
+
+                        <ul class="submenu ">
+
+                            <li class="submenu-item  ">
+                                <h:link outcome="/views/unidad/List" class="submenu-link" value="Show All Unidad Items"/>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-title">Gestion de Usuarios</li>
+                    <li
+                        class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-shield-lock"></i>
+                            <span>Usuarios y Roles</span>
+                        </a>
+
+                        <ul class="submenu ">
+
+                            <li class="submenu-item  ">
+                                <h:link outcome="/views/sysuser/List" class="submenu-link" value="Show All Sysuser Items"/>
+                            </li>
+
+                            <li class="submenu-item  ">
+                                <h:link outcome="/views/levlusr/List" class="submenu-link" value="Show All Levlusr Items"/>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</ui:composition>

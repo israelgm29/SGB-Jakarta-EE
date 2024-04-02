@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+            #{bundle.EditSysuserTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_idSysuser}" for="idSysuser" />
+                    <h:inputText id="idSysuser" value="#{sysuserController.selected.idSysuser}" title="#{bundle.EditSysuserTitle_idSysuser}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_idSysuser}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{sysuserController.selected.address}" title="#{bundle.EditSysuserTitle_address}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_created}" for="created" />
+                    <h:inputText id="created" value="#{sysuserController.selected.created}" title="#{bundle.EditSysuserTitle_created}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_deleted}" for="deleted" />
+                    <h:inputText id="deleted" value="#{sysuserController.selected.deleted}" title="#{bundle.EditSysuserTitle_deleted}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_dni}" for="dni" />
+                    <h:inputText id="dni" value="#{sysuserController.selected.dni}" title="#{bundle.EditSysuserTitle_dni}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_emal}" for="emal" />
+                    <h:inputText id="emal" value="#{sysuserController.selected.emal}" title="#{bundle.EditSysuserTitle_emal}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_lastnameOne}" for="lastnameOne" />
+                    <h:inputText id="lastnameOne" value="#{sysuserController.selected.lastnameOne}" title="#{bundle.EditSysuserTitle_lastnameOne}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_lastnameTwo}" for="lastnameTwo" />
+                    <h:inputText id="lastnameTwo" value="#{sysuserController.selected.lastnameTwo}" title="#{bundle.EditSysuserTitle_lastnameTwo}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_modified}" for="modified" />
+                    <h:inputText id="modified" value="#{sysuserController.selected.modified}" title="#{bundle.EditSysuserTitle_modified}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{sysuserController.selected.name}" title="#{bundle.EditSysuserTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{sysuserController.selected.password}" title="#{bundle.EditSysuserTitle_password}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{sysuserController.selected.status}" title="#{bundle.EditSysuserTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_fkLvlusr}" for="fkLvlusr" />
+                    <h:selectOneMenu id="fkLvlusr" value="#{sysuserController.selected.fkLvlusr}" title="#{bundle.EditSysuserTitle_fkLvlusr}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_fkLvlusr}">
+                        <f:selectItems value="#{levlusrController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{sysuserController.update}" value="#{bundle.EditSysuserSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSysuserViewLink}"/>
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.EditSysuserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSysuserIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

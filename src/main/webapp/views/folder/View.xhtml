@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFolderTitle}"></h:outputText>
+        </ui:define>
+          <ui:define name="breadcrum">
+          #{bundle.ViewFolderTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFolderLabel_folderCode}"/>
+                    <h:outputText value="#{folderController.selected.folderCode}" title="#{bundle.ViewFolderTitle_folderCode}"/>
+                    <h:outputText value="#{bundle.ViewFolderLabel_status}"/>
+                    <h:outputText value="#{folderController.selected.status}" title="#{bundle.ViewFolderTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewFolderLabel_fkStudent}"/>
+                    <h:outputText value="#{folderController.selected.fkStudent.name} #{folderController.selected.fkStudent.lastnameOne}" title="#{bundle.ViewFolderTitle_fkStudent}"/>
+                        
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{folderController.destroyAndView}" value="#{bundle.ViewFolderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFolderEditLink}"/>
+                <br />
+                <h:commandLink action="#{folderController.prepareCreate}" value="#{bundle.ViewFolderCreateLink}" />
+                <br />
+                <h:commandLink action="#{folderController.prepareList}" value="#{bundle.ViewFolderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFolderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
