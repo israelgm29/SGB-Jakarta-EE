@@ -6,7 +6,8 @@
       xmlns:p ="jakarta.faces.passthrough">
     <h:head>
         <h:outputStylesheet library="css" name="bootstrap.css"/>
-        <title>Facelet Title</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['icons/favicon.ico']}"/>
+        <title>CATSOFT</title>
     </h:head>
     <h:body>
         <div class="container-fluid">
@@ -25,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <h:outputText value="Contraseña"></h:outputText>
-                                <h:inputSecret class="form-control mb-2" value="#{loginController.selected.password}"/>
+                                <h:inputSecret placeholder="Your password" class="form-control mb-2" value="#{loginController.selected.password}"/>
                             </div>
                             
                             <h:panelGroup  role="alert" id="messagePanel" layout="block">
