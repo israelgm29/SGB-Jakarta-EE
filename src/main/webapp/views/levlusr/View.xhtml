@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLevlusrTitle}"></h:outputText>
+        </ui:define>
+          <ui:define name="breadcrum">
+           #{bundle.ViewLevlusrTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLevlusrLabel_idLvluser}"/>
+                    <h:outputText value="#{levlusrController.selected.idLvluser}" title="#{bundle.ViewLevlusrTitle_idLvluser}"/>
+                    <h:outputText value="#{bundle.ViewLevlusrLabel_description}"/>
+                    <h:outputText value="#{levlusrController.selected.description}" title="#{bundle.ViewLevlusrTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewLevlusrLabel_name}"/>
+                    <h:outputText value="#{levlusrController.selected.name}" title="#{bundle.ViewLevlusrTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{levlusrController.destroyAndView}" value="#{bundle.ViewLevlusrDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLevlusrEditLink}"/>
+                <br />
+                <h:commandLink action="#{levlusrController.prepareCreate}" value="#{bundle.ViewLevlusrCreateLink}" />
+                <br />
+                <h:commandLink action="#{levlusrController.prepareList}" value="#{bundle.ViewLevlusrShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLevlusrIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

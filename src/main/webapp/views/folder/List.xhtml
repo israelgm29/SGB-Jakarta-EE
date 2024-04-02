@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFolderTitle}"></h:outputText>
+        </ui:define>
+          <ui:define name="breadcrum">
+            #{bundle.ListFolderTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFolderEmpty}" rendered="#{folderController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{folderController.items.rowCount > 0}">
+                    <h:outputText value="#{folderController.pagination.pageFirstItem + 1}..#{folderController.pagination.pageLastItem + 1}/#{folderController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{folderController.previous}" value="#{bundle.Previous} #{folderController.pagination.pageSize}" rendered="#{folderController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{folderController.next}" value="#{bundle.Next} #{folderController.pagination.pageSize}" rendered="#{folderController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table table-hover" value="#{folderController.items}" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_idFolder}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFolder}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_created}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.created}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_deleted}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deleted}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_folderCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.folderCode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_modified}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modified}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFolderTitle_fkStudent}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkStudent}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{folderController.prepareView}" value="#{bundle.ListFolderViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{folderController.prepareEdit}" value="#{bundle.ListFolderEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{folderController.destroy}" value="#{bundle.ListFolderDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{folderController.prepareCreate}" value="#{bundle.ListFolderCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFolderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p ="jakarta.faces.passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 mx-auto">
+                    <div>
+
+                        <div class="brand-logo">
+                            <h:graphicImage  class="img-thumbnail"  value="#{resource['img/rocket-dark.png']}"/>
+                        </div>
+                        <h4 class="text-center text-primary">! Bienvenido al Sistema Gestor de Documentacion Estudiantil ! </h4>
+                        <h:form>
+                            <div class="form-group">
+                                <h:outputText value="Correo Electronico"></h:outputText>
+                                <h:inputText p:type="email" p:placeholder="example@example.com" class="form-control mb-2" value="#{loginController.selected.emal}" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputText value="Contraseña"></h:outputText>
+                                <h:inputSecret class="form-control mb-2" value="#{loginController.selected.password}"/>
+                            </div>
+                            
+                            <h:panelGroup  role="alert" id="messagePanel" layout="block">
+                                <h:messages class="alert alert-danger" errorClass="text-center"  layout="table"/>
+                            </h:panelGroup>
+                            <div class="mt-3 text-center">
+                                <h:commandButton type="submit" class="btn btn-block btn-primary" value="Iniciar Sesion" action="#{loginController.userLogin()}">
+                                </h:commandButton>
+                            </div>
+
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <label class="form-check-label text-muted">
+                                        <input type="checkbox" class="form-check-input"/> Recordar mi contraseña </label>
+                                </div>
+                                <a href="#" class="auth-link text-black">¿Olvidaste tu contraseña?</a>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- content-wrapper ends -->
+        </div>
+
+    </h:body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDistrictTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+          #{bundle.CreateDistrictTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDistrictLabel_idDistrict}" for="idDistrict" />
+                    <h:inputText id="idDistrict" value="#{districtController.selected.idDistrict}" title="#{bundle.CreateDistrictTitle_idDistrict}" required="true" requiredMessage="#{bundle.CreateDistrictRequiredMessage_idDistrict}"/>
+                    <h:outputLabel value="#{bundle.CreateDistrictLabel_districtCode}" for="districtCode" />
+                    <h:inputText id="districtCode" value="#{districtController.selected.districtCode}" title="#{bundle.CreateDistrictTitle_districtCode}" />
+                    <h:outputLabel value="#{bundle.CreateDistrictLabel_districtName}" for="districtName" />
+                    <h:inputText id="districtName" value="#{districtController.selected.districtName}" title="#{bundle.CreateDistrictTitle_districtName}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{districtController.create}" value="#{bundle.CreateDistrictSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{districtController.prepareList}" value="#{bundle.CreateDistrictShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDistrictIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

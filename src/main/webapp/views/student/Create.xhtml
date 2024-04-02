@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="jakarta.faces.passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+            <h:outputText value="#{bundle.CreateStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Informaciòn Personal</h5>
+
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control" id="name" value="#{studentController.selected.name}" title="#{bundle.CreateStudentTitle_name}" />
+                                    <h:outputLabel  value="#{bundle.CreateStudentLabel_name}" for="name" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control" id="lastnameOne" value="#{studentController.selected.lastnameOne}" title="#{bundle.CreateStudentTitle_lastnameOne}" />
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_lastnameOne}" for="lastnameOne" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control" id="lastnameTwo" value="#{studentController.selected.lastnameTwo}" title="#{bundle.CreateStudentTitle_lastnameTwo}" />
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_lastnameTwo}" for="lastnameTwo" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputText p:type="date"  class="form-control" id="birthday" value="#{studentController.selected.birthday}" title="#{bundle.CreateStudentTitle_birthday}" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:inputText>
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_birthday}" for="birthday" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control" id="age" value="#{studentController.selected.age}" title="#{bundle.CreateStudentTitle_age}" />
+                                    <h:outputLabel  value="#{bundle.CreateStudentLabel_age}" for="age" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Informaciòn de contacto</h5>
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control" id="emal" value="#{studentController.selected.emal}" title="#{bundle.CreateStudentTitle_emal}" />
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_emal}" for="emal" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputText class="form-control"  id="dni" value="#{studentController.selected.dni}" title="#{bundle.CreateStudentTitle_dni}" />
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_dni}" for="dni" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:inputTextarea class="form-control"  rows="5"  id="address" value="#{studentController.selected.address}" title="#{bundle.CreateStudentTitle_address}" />                                                            
+                                    <h:outputLabel p:type="time" value="#{bundle.CreateStudentLabel_address}" for="address" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Informaciòn Academica</h5>
+                                <div class="form-floating mb-3">
+                                    <h:selectOneMenu class="form-control form-select " id="fkUnidad" value="#{studentController.selected.fkUnidad}" title="#{bundle.CreateStudentTitle_fkUnidad}" required="true" requiredMessage="#{bundle.CreateStudentRequiredMessage_fkUnidad}">
+                                        <f:selectItems value="#{unidadController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_fkUnidad}" for="fkUnidad" />
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <h:selectOneMenu class="form-control form-select " id="status" value="#{studentController.selected.status}" title="#{bundle.CreateStudentTitle_status}" required="true" requiredMessage="#{bundle.CreateStudentRequiredMessage_status}">
+                                        <f:selectItem itemLabel="Seleccionar" noSelectionOption="true"> </f:selectItem>
+                                        <f:selectItem itemLabel="Matriculado" itemValue="true"> </f:selectItem>
+                                        <f:selectItem itemLabel="Retirado" itemValue="false"> </f:selectItem>
+                                    </h:selectOneMenu>
+                                    <h:outputLabel value="#{bundle.CreateStudentLabel_status}" for="status" />
+                                </div>
+                                <div class="form-floating mb-3">                                  
+                                    <h:inputText class="form-control" id="folderCode" value="#{studentController.selectedFolder.folderCode}" title="#{bundle.CreateFolderTitle_folderCode}" />
+                                    <h:outputLabel value="#{bundle.CreateFolderLabel_folderCode}" for="folderCode" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center ">
+                    <h:commandLink class="btn btn-primary me-1 mb-1" action="#{studentController.create}" value="#{bundle.CreateStudentSaveLink}" />
+                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cancelar</button>
+                    <h:commandLink class="btn btn-secondary" action="#{studentController.prepareList}" value="#{bundle.CreateStudentShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+           
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+
+                        <strong class="me-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                    </div>
+                </div>
+            </div>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

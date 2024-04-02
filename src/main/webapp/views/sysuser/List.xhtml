@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+        #{bundle.ListSysuserTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSysuserEmpty}" rendered="#{sysuserController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sysuserController.items.rowCount > 0}">
+                    <h:outputText value="#{sysuserController.pagination.pageFirstItem + 1}..#{sysuserController.pagination.pageLastItem + 1}/#{sysuserController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sysuserController.previous}" value="#{bundle.Previous} #{sysuserController.pagination.pageSize}" rendered="#{sysuserController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sysuserController.next}" value="#{bundle.Next} #{sysuserController.pagination.pageSize}" rendered="#{sysuserController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table table-hover" value="#{sysuserController.items}" var="item" >
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_idSysuser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSysuser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_address}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_created}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.created}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_deleted}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deleted}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_dni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dni}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_emal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_lastnameOne}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastnameOne}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_lastnameTwo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastnameTwo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_modified}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modified}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_password}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.password}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysuserTitle_fkLvlusr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkLvlusr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sysuserController.prepareView}" value="#{bundle.ListSysuserViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sysuserController.prepareEdit}" value="#{bundle.ListSysuserEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sysuserController.destroy}" value="#{bundle.ListSysuserDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sysuserController.prepareCreate}" value="#{bundle.ListSysuserCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSysuserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

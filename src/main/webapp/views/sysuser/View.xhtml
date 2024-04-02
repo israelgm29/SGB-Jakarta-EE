@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrum">
+           #{bundle.ViewSysuserTitle}
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSysuserLabel_idSysuser}"/>
+                    <h:outputText value="#{sysuserController.selected.idSysuser}" title="#{bundle.ViewSysuserTitle_idSysuser}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_address}"/>
+                    <h:outputText value="#{sysuserController.selected.address}" title="#{bundle.ViewSysuserTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_created}"/>
+                    <h:outputText value="#{sysuserController.selected.created}" title="#{bundle.ViewSysuserTitle_created}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_deleted}"/>
+                    <h:outputText value="#{sysuserController.selected.deleted}" title="#{bundle.ViewSysuserTitle_deleted}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_dni}"/>
+                    <h:outputText value="#{sysuserController.selected.dni}" title="#{bundle.ViewSysuserTitle_dni}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_emal}"/>
+                    <h:outputText value="#{sysuserController.selected.emal}" title="#{bundle.ViewSysuserTitle_emal}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_lastnameOne}"/>
+                    <h:outputText value="#{sysuserController.selected.lastnameOne}" title="#{bundle.ViewSysuserTitle_lastnameOne}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_lastnameTwo}"/>
+                    <h:outputText value="#{sysuserController.selected.lastnameTwo}" title="#{bundle.ViewSysuserTitle_lastnameTwo}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_modified}"/>
+                    <h:outputText value="#{sysuserController.selected.modified}" title="#{bundle.ViewSysuserTitle_modified}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_name}"/>
+                    <h:outputText value="#{sysuserController.selected.name}" title="#{bundle.ViewSysuserTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_password}"/>
+                    <h:outputText value="#{sysuserController.selected.password}" title="#{bundle.ViewSysuserTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_status}"/>
+                    <h:outputText value="#{sysuserController.selected.status}" title="#{bundle.ViewSysuserTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_fkLvlusr}"/>
+                    <h:outputText value="#{sysuserController.selected.fkLvlusr}" title="#{bundle.ViewSysuserTitle_fkLvlusr}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sysuserController.destroyAndView}" value="#{bundle.ViewSysuserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSysuserEditLink}"/>
+                <br />
+                <h:commandLink action="#{sysuserController.prepareCreate}" value="#{bundle.ViewSysuserCreateLink}" />
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.ViewSysuserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSysuserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

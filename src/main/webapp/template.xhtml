@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p ="jakarta.faces.passthrough"
+      xmlns:h="jakarta.faces.html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+
+
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+
+    </h:head>
+
+    <h:body>
+        <div class="container-fluid">
+            <ui:include src="/components/navbar.xhtml"></ui:include>
+            <section class="section mt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title"><ui:insert name="title">Default Title</ui:insert></h5>
+                                    <ol class="breadcrumb justify-content-end">
+                                        <li class="breadcrumb-item"><h:link outcome="/views/folder/List" >Home</h:link></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <ui:insert class="" name="breadcrum">
+                                            </ui:insert>
+                                        </li>
+                                    </ol>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ui:insert name="body">Default Body</ui:insert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="footer mt-auto py-3 bg-light">
+                <div class="container">
+                    <span class="text-muted">Place sticky footer content here.</span>
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="
+                https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js
+        "></script>
+        <link href="
+              https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css
+              " rel="stylesheet"/>
+    </h:body>
+
+</html>
